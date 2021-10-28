@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecadosController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,22 @@ Route::prefix('usuarios')->group(function() {
     Route::post('/inserir', [UsuariosController::class, 'insert'])->name('usuarios.gravar');
 
 });
+//rotas novas \/
+Route::get('recados', [RecadosController::class, 'index'])->name('recados');
+
+//criar
+Route::get('/recados/inserir', [RecadosController::class, 'create'])->name('recados.inserir');
+
+Route::post('/recados/inserir', [RecadosController::class, 'insert'])->name('recados.gravar');
+//eidtar
+Route::get('/recados/{rec}/editar', [RecadosController::class, 'edit'])->name('recados.edit');
+
+Route::put('/recados/{rec}/editar', [RecadosController::class, 'update'])->name('recados.update');
+//apagar
+Route::get('/recados/{rec}/apagar', [RecadosController::class, 'remove'])->name('recados.remove');
+
+Route::delete('/recados/{rec}/apagar', [RecadosController::class, 'delete'])->name('recados.delete');
+//rotas novas /\
 
 Route::get('/login', [UsuariosController::class, 'login'])->name('login');
 Route::post('/login', [UsuariosController::class, 'login']);
